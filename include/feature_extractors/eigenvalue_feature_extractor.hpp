@@ -1,37 +1,40 @@
-#ifndef EIGENVALUE_FEATURE_EXTRACTOR_HPP_
-#define EIGENVALUE_FEATURE_EXTRACTOR_HPP_
+/*
+ * Copyright (C) 2019 by AutoSense Organization. All rights reserved.
+ * Gary Chan <chenshj35@mail2.sysu.edu.cn>
+ */
+#ifndef FEATURE_EXTRACTORS_INCLUDE_FEATURE_EXTRACTORS_EIGENVALUE_FEATURE_EXTRACTOR_HPP_
+#define FEATURE_EXTRACTORS_INCLUDE_FEATURE_EXTRACTORS_EIGENVALUE_FEATURE_EXTRACTOR_HPP_
 
-#include "base_feature_extractor.hpp"
+#include <string>
+#include <vector>
 
+#include "common/types/type.h"
+#include "feature_extractors/base_feature_extractor.hpp"
+
+namespace autosense {
 namespace feature {
 
-    class EigenValueFeatureExtractor : public BaseFeatureExtractor {
+class EigenValueFeatureExtractor : public BaseFeatureExtractor {
+ public:
+    EigenValueFeatureExtractor();
 
-    public:
-        EigenValueFeatureExtractor();
+    ~EigenValueFeatureExtractor();
 
-        ~EigenValueFeatureExtractor();
+    void compute(const std::vector<PointICloudPtr> &cloud_clusters,
+                 std::vector<Feature> &features);  // NOLINT
 
-        virtual void compute(const std::vector<PointICloudPtr>& cloud_clusters,
-                             std::vector<Feature>* features);
+    void compute(const PointICloud &cloud_in, Feature *feature);
 
-        virtual void compute(const PointICloud& cloud_in, Feature* feature);
+    /// \brief Get the descriptor's dimension.
+    unsigned int dimension() const { return kDimension; }
 
-        /// \brief Get the descriptor's dimension.
-        virtual unsigned int dimension() const
-        {
-            return kDimension;
-        };
+    std::string name() const { return "EigenValueFeatureExtractor"; }
 
-        virtual std::string name() const
-        {
-            return "EigenValueFeatureExtractor";
-        }
+ private:
+    static constexpr unsigned int kDimension = 9u;
+};
 
-    private:
+}  // namespace feature
+}  // namespace autosense
 
-        static constexpr unsigned int kDimension = 9u;
-    };
-}
-
-#endif /* EIGENVALUE_FEATURE_EXTRACTOR_HPP_ */
+#endif  // FEATURE_EXTRACTORS_INCLUDE_FEATURE_EXTRACTORS_EIGENVALUE_FEATURE_EXTRACTOR_HPP_
