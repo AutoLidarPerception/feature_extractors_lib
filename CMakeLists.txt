@@ -1,3 +1,8 @@
+##
+# Copyright (C) 2019 by AutoSense Organization. All rights reserved.
+# Gary Chan <chenshj35@mail2.sysu.edu.cn>
+##
+
 cmake_minimum_required(VERSION 2.8.3)
 project(feature_extractors_lib)
 
@@ -11,8 +16,6 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
     # ROS core
     roscpp
-    # 3rd modules for ROS, like Eigen
-    cmake_modules
     # local packages
     common_lib
 )
@@ -41,7 +44,7 @@ catkin_package(
     #  CATKIN_DEPENDS roscpp
     #  DEPENDS system_lib
     INCLUDE_DIRS include
-    LIBRARIES object_builders_lib
+    LIBRARIES ${PROJECT_NAME}
 )
 
 

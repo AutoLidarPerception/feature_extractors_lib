@@ -2,10 +2,12 @@
  * Copyright (C) 2019 by AutoSense Organization. All rights reserved.
  * Gary Chan <chenshj35@mail2.sysu.edu.cn>
  */
+
 #ifndef FEATURE_EXTRACTORS_INCLUDE_FEATURE_EXTRACTORS_HISTOGRAM_FEATURE_EXTRACTOR_HPP_
 #define FEATURE_EXTRACTORS_INCLUDE_FEATURE_EXTRACTORS_HISTOGRAM_FEATURE_EXTRACTOR_HPP_
 
 #include <vector>
+#include <string>
 
 #include "common/types/feature.hpp"
 #include "common/types/type.h"
